@@ -1,0 +1,19 @@
+<h1>Books</h1>
+
+<table>
+
+  <tr>
+    <th>title</th>
+    <th>option</th>
+  </tr>
+
+  <tr>
+    <% @books.each do |book| %>
+    <%# <!-- <td><%= book.user.name %></td> --> %>
+    <%# <!-- <td><%= link_to book.book_name, book_path(@book.id), class: "book_path_#{@book.id}" %></td> --> %>
+    <td><%= book.book_name %></td>
+    <td><%= book.caption %></td>
+  </tr>
+    <% end %>
+
+</table>

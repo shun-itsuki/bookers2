@@ -1,0 +1,9 @@
+
+<%= @book.user.name %>
+<h2>title</h2>
+<p><%= @book.book_name %></p>
+<h2>body</h2>
+<p><%= @book.caption %></p>
+
+<%= link_to "edit" , edit_book_path(@book.id) , class:"edit_#{@book.id}" %>
+<%= link_to "destroy", book_path(@book.id), method: delete, class:"destroy_book#{@book.id}" %>

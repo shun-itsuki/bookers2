@@ -1,0 +1,14 @@
+<h1>ようこそ！Bookersへ</h1>
+<p>こちらのページでは様々な本のレビューを投稿することができます。</p>
+<%#= link_to 'Log In',  %>
+<%#= link_to 'sign Up',  %>
+
+<!-- コメント送信用 -->
+<h2>New Book</h2>
+<%= form_for(@book) do |f| %>
+<h4>title</h4>
+<%= f.text_field :book_name , class:"book_title" %>
+<h4>option</h4>
+<%= f.text_area :caption , class:"book_body"%>
+<br><%= f.submit "create book" %></br>
+<% end %>

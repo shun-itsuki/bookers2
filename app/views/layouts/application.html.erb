@@ -7,9 +7,49 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
   </head>
 
   <body>
-    <%= yield %>
+   <div class="page-header">
+    <div id="slidemenu">
+      <ul class="nav navbar-nav navbar-right" date-hover="dropdown" date-animation="zoomIn fadeIn fadeInUp fadeIn">
+        <% if user_signed_in? %>
+         <li class="">
+          <%= link_to "Home", root_path, class:"home" %>
+         </li>
+         <li class="">
+          <%# <%= link_to "Users", empty_path %> %>
+         </li>
+         <li class="">
+          <%= link_to "Books", books_path, class:"books" %>
+         </li>
+         <li class="">
+          <%= link_to "logout", destroy_user_session_path, method: :delete, class:"logout" %>
+         </li>
+        <% else %>
+         <li class="">
+          <%= link_to "Home", root_path, class:"home" %>
+         </li>
+         <li class="">
+          <%= link_to "About", books_about_path, class:"about" %>
+         </li>
+         <li class="">
+          <%= link_to "Sign up", new_user_registration_path %>
+         </li>
+         <li class="">
+          <%= link_to "login", new_user_session_path, class:"sign_in" %>
+         </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+     <%= yield %>
+
+<footer>
+
+</footer>
   </body>
 </html>
