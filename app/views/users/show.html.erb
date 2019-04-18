@@ -1,2 +1,21 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<%= flash[:success] %>
+
+<table>
+
+  <tr>
+    <th>title</th>
+    <th>option</th>
+  </tr>
+
+  <tr>
+    <% @books.each do |book| %>
+    <td><%= book.user.name %></td>
+    <td><%= link_to book.book_name, book_path(book.id), class: "book_path_#{book.id}" %></td>
+    <td><%= book.caption %></td>
+  </tr>
+    <% end %>
+
+</table>
+
+<!-- 部分テンプレート (マイページ、送信フォーム) -->
+<%= render'users/list',user:@user,book:@book %>
