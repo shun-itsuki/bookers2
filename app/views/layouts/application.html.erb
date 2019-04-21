@@ -10,45 +10,48 @@
 
   </head>
 
-  <body>
-   <div class="page-header">
-    <div id="slidemenu">
-      <ul class="nav navbar-nav navbar-right" date-hover="dropdown" date-animation="zoomIn fadeIn fadeInUp fadeIn">
+<body>
+ <nav class= "navbar navbar-inverse" >
+   <div class="container-fluid">
+    <div class="navbar-header">
+      <p class ="title navbar-brand ">Bookers</p>
+    </div>
+      <ul class="nav navbar-nav" >
         <% if user_signed_in? %>
-         <li class="">
-          <%= link_to "Home", user_path(current_user.id), class:"user_#{current_user.id}" %>
+         <li aria-hidden="true">
+          <%= link_to "Home", user_path(current_user.id), class:"user_#{current_user.id} glyphicon glyphicon-home" %>
          </li>
-         <li class="">
-          <%= link_to "Users", users_path, class:"users" %>
+         <li aria-hidden="true">
+          <%= link_to "Users", users_path, class:"users glyphicon glyphicon-user" %>
          </li>
-         <li class="">
-          <%= link_to "Books", books_path, class:"books" %>
+         <li aria-hidden="true">
+          <%= link_to "Books", books_path, class:"books glyphicon glyphicon-book" %>
          </li>
-         <li class="">
-          <%= link_to "logout", destroy_user_session_path, method: :delete, class:"logout" %>
+         <li aria-hidden="true">
+          <%= link_to "logout", destroy_user_session_path, method: :delete, class:"logout glyphicon glyphicon-log-out" %>
          </li>
         <% else %>
-         <li class="">
-          <%= link_to "Home", root_path, class:"home" %>
+         <li aria-hidden="true">
+          <%= link_to "Home", root_path, class:"home glyphicon glyphicon-home" %>
          </li>
-         <li class="">
-          <%= link_to "About", books_about_path, class:"about" %>
+         <li aria-hidden="true">
+          <%= link_to "About", books_about_path, class:"about glyphicon glyphicon-link" %>
          </li>
-         <li class="">
-          <%= link_to "Sign up", new_user_registration_path, class:"sign_up" %>
+         <li aria-hidden="true">
+          <%= link_to "Sign up", new_user_registration_path, class:"sign_up glyphicon glyphicon-edit" %>
          </li>
-         <li class="">
-          <%= link_to "login", new_user_session_path, class:"sign_in" %>
+         <li aria-hidden="true">
+          <%= link_to "login", new_user_session_path, class:"sign_in glyphicon glyphicon-log-in" %>
          </li>
         <% end %>
       </ul>
+     </div>
     </div>
-  </div>
-
-     <%= yield %>
+  </nav>
+<%= yield %>
 
 <footer>
-
+ <p style ="text-align: right">© All rights reserved by Infratop.Inc.</p>
 </footer>
   </body>
 </html>

@@ -1,40 +1,75 @@
 <%= flash[:success] %>
-
-<%= @book.user.name %>
-<p><%= @book.book_name %></p>
-<p><%= @book.caption %></p>
-
-<% if @user == current_user %>
-<%= link_to "edit", edit_book_path(@book.id) , class:"edit_#{@book.id}" %>
-<%= link_to "destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？", class:"destroy_book#{@book.id}" %>
-<% end %>
+<div class="container">
+ <div class="row">
+  <div class="col-lg-3">
 
 <!-- マイページ用 -->
-<h2>User Info</h2>
-<h4><%= attachment_image_tag @user, :user_image, :fill, 80, 80, format: 'jpeg' %></h4>
-<h4>name:<%= @user.name %></h4>
-<h4>introduction:<%= @user.introduction %></h4>
-
- <%= link_to "edit", user_path(current_user.id), class:"user_#{current_user.id}" %>
-
+ <h1>User Info</h1>
+ <table class="table">
+  <%= attachment_image_tag @user, :user_image, :fill, 80, 80, format: 'jpeg',fallback: "no_image.jpg", :size => "80x80" %>
+  <tr>
+   <th>name:<%= @user.name %></th>
+  </tr>
+  <tr>
+   <th>introduction:<%= @user.introduction %></th>
+  </tr>
+  <tr>
+   <th>
+     <%= link_to "", user_path(current_user.id), class:"user_#{current_user.id}  glyphicon glyphicon-wrench btn btn-default" %>
+   </th>
+  </tr>
+ </table>
 <!-- 本送信用 -->
-<h2>New Book</h2>
-<%= form_for(@bookn) do |f| %>
-<h4>title</h4>
-<%= f.text_field :book_name , class:"book_title" %>
-<h4>option</h4>
-<%= f.text_area :caption , class:"book_body"%>
-
- <br><%= f.submit "create book" %></br>
-
-<% if @bookn.errors.any? %>
-  <div id="error_explanation" class="alert alert-danger">
+ <h1>New Book</h1>
+ <%= form_for(@books) do |f| %>
+ <h4>title</h4>
+ <%= f.text_field :book_name , class:"book_title" %>
+ <h4>option</h4>
+ <%= f.text_area :caption , class:"book_body"%>
+ <br><%= f.submit "create book" , class: "btn btn-primary" %></br>
+  <% if @books.errors.any? %>
+   <div id="error_explanation" class="alert alert-danger">
     <ul>
-      <% @bookn.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+     <% @books.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+     <% end %>
     </ul>
-  </div>
-<% end %>
+   </div>
+   <% end %>
+  <% end %>
+ </div>
 
-<% end %>
+<div class="col-lg-9">
+ <table class="table">
+
+<h1>Book Detail</h1>
+<tr>
+ <th>
+   <div>
+     <%= attachment_image_tag @book.user, :user_image, :fill, 30, 30, format: 'jpeg' ,fallback: "no_image.jpg", :size => "30x30" %>
+     <%= link_to @book.user.name , user_path(@book.user.id), class: "user_#{@book.user.id}" %>
+   </div>
+ </th>
+ <th><%= @book.book_name %></th>
+ <th><%= @book.caption %></th>
+
+ <% if @user == current_user %>
+
+ <th>
+  <span button type="button" class="btn btn-default"  style="background-color: #33CC66;" font color="white">
+   <%= link_to "edit", edit_book_path(@book.id) , class:"edit_#{@book.id}" %>
+  </span>
+ </th>
+
+ <th>
+  <span button type="button" class="btn btn-default"  style="background-color: #CC3300;">
+   <%= link_to "destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？", class:"destroy_book#{@book.id}" %>
+  </span>
+ </th>
+ <% end %>
+</tr>
+
+</table>
+</div>
+</div>
+</div>

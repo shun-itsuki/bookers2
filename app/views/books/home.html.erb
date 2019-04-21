@@ -1,5 +1,14 @@
-<h1>ようこそ！Bookersへ</h1>
-<p>こちらのページでは様々な本のレビューを投稿することができます。</p>
+<%= flash[:success] %>
 
-<br><%= link_to "login", new_user_session_path, class:"sign_in" %></br>
-<br><%= link_to "Sign up", new_user_registration_path, class:"sign_up" %></br>
+<h1>ようこそ！<span class="glyphicon glyphicon-book" aria-hidden="true"></span>Bookersへ</h1>
+<p><span class="glyphicon glyphicon-book" aria-hidden="true"></span>Bookersでは様々な本のレビューを投稿することができます。</p>
+
+<span button type="button" class="btn btn-default"  style="background-color: #33CCFF;">
+ <%= link_to "login", new_user_session_path, class:"sign_in" %>
+</span>
+
+<br>
+<span button type="button" class="btn btn-default"  style="background-color: #33CC66;">
+ <%= link_to "Sign up", new_user_registration_path, class:"sign_up" %>
+</span>
+</br>

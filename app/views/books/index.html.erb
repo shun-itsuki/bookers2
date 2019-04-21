@@ -1,22 +1,35 @@
+<div class="container">
+<div class="row">
+
+  <!-- 部分テンプレート (マイページ、送信フォーム) -->
+  <div class="col-lg-3">
+  <%= render'users/list',user:@user,book:@book %>
+  </div>
+  <!-- 部分テンプレートここまで -->
+
+<div class="col-lg-9">
+<table class="table">
+
 <h1>Books</h1>
 
-<table>
+<table class="table">
 
   <tr>
+    <th></th>
     <th>title</th>
     <th>option</th>
   </tr>
 
   <tr>
     <% @books.each do |book| %>
-    <td><%= book.user.name %></td>
+    <td><%= attachment_image_tag book.user, :user_image, :fill, 30, 30, format: 'jpeg', fallback: "no_image.jpg", :size => "30x30" %></td>
     <td><%= link_to book.book_name, book_path(book.id), class: "book_path_#{book.id}" %></td>
-    <td><%= book.book_name %></td>
     <td><%= book.caption %></td>
   </tr>
     <% end %>
 
 </table>
 
-<!-- 部分テンプレート (マイページ、送信フォーム) -->
-<%= render'users/list',user:@user,book:@book %>
+</div>
+</div>
+</div>
