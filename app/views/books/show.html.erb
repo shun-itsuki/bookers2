@@ -57,13 +57,13 @@
 
  <th>
   <span button type="button" class="btn btn-default"  style="background-color: #33CC66;" font color="white">
-   <%= link_to "edit", edit_book_path(@book.id) , class:"edit_#{@book.id}" %>
+   <%= link_to "edit", edit_book_path(@book.id) , class:"edit_book_#{@book.id}" %>
   </span>
  </th>
 
  <th>
   <span button type="button" class="btn btn-default"  style="background-color: #CC3300;">
-   <%= link_to "destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？", class:"destroy_book#{@book.id}" %>
+   <%= link_to "destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？", class:"destroy_book_#{@book.id}" %>
   </span>
  </th>
  <% end %>

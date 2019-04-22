@@ -22,7 +22,7 @@
   <tr>
     <% @books.each do |book| %>
     <td><%= attachment_image_tag @user, :user_image, :fill, 30, 30, format: 'jpeg',fallback: "no_image.jpg", :size => "30x30" %></td>
-    <td><%= link_to book.book_name, book_path(book.id), class: "book_path_#{book.id}" %></td>
+    <td><%= link_to book.book_name, book_path(book.id), class: "book_#{book.id}" %></td>
     <td><%= book.caption %></td>
   </tr>
     <% end %>
