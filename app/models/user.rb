@@ -6,9 +6,10 @@ class User < ApplicationRecord
 
   has_many :books,dependent: :destroy
   attachment :user_image
-  validates :name, presence: true, uniqueness: true
+
+  validates :name, length: { in: 2..20 }
 
   with_options on: :update do |update|
-    update.validates :introduction,    length: { in: 1..50 }
+    update.validates :introduction, length: { in: 1..50 }
   end
 end
